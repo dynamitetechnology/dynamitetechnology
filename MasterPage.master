@@ -1,0 +1,394 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>DoctorCall</title>
+		
+		
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+       
+<link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.css">
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="/" class="navbar-brand logo">
+							<img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="Default.aspx" class="menu-logo">
+								<img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="active">
+								<a href="Default.aspx">Home</a>
+							</li>
+                            <li class="active">
+								<a href="SearchDoctor.aspx">Search Doctor</a>
+							</li>
+							<li class="has-submenu">
+								<a href="#">Medicine <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li><a href="#">Upload Prescription</a></li>
+									<li><a href="#">Track Order</a></li>
+								
+								</ul>
+							</li>	
+							     <%
+                            if (Session["user"] == null)
+                            {
+                        %>
+							<li class="has-submenu">
+								<a href="#">Admin <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">                                
+									<li><a href="doctor/Doctorlogin.aspx">Doctor Login</a></li>
+									<li><a href="#">Admin Login</a></li>								
+								</ul>
+							</li>
+                            <%
+                            }
+                            else
+                            {
+                        %>
+							<li>
+								<a href="patient/Pdashboard.aspx">Dashboard</a>
+							</li>
+                            <%
+                            }
+                                            %>
+                                 <%
+                            if (Session["user"] == null)
+                            {
+                        %>
+							<li class="login-link">
+								<a href="Patientlogin.aspx">Login / Signup</a>
+							</li>
+                            <%
+                            }
+                            else
+                            {
+                        %>
+							<li class="login-link">
+								<a href="/logout.aspx">Logout</a>
+							</li>
+                            <%
+                            }
+                                            %>	
+							
+						</ul>		 
+					</div>		 
+					<ul class="nav header-navbar-rht">
+                           <% if (Session["user"] == null)
+                            {
+                        %>
+						<li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>							
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header">Contact</p>
+								<p class="contact-info-header"> +91 9769610790</p>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header-login" href="Patientlogin.aspx">login / Signup </a>
+						</li>
+                           <%
+                            }
+                            else
+                            {
+                        %>
+                        <li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>							
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header">Contact</p>
+								<p class="contact-info-header"> +91 9755367558</p>
+							</div>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link header-login" href="logout.aspx">logout</a>
+						</li>
+                          <%
+                            }
+                                            %>
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+						 <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							      
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+			<!-- Footer -->
+		<footer class="footer">
+				
+				<!-- Footer Top -->
+				<div class="footer-top">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="assets/img/footer-logo.png" alt="logo">
+									</div>
+									<div class="footer-about-content">
+										<p>City Hospital is committed to achieve excellence in health care by providing the latest technology for diagnostic and therapeutic services with a pleasant ambience. </p>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Patients</h2>
+									<ul>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Prescription</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Doctors</h2>
+									<ul>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a href="#"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contact Us</h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<span><i class="fas fa-map-marker-alt"></i></span>
+											<p> Plot No. 32, Sector – 4,,<br> Kalamboli, Navi Mumbai – 410218..</p>
+										</div>
+										<p>
+											<i class="fas fa-phone-alt"></i>
+											9769610790 / 9769610798 / 9769610789
+										</p>
+										<p class="mb-0">
+											<i class="fas fa-envelope"></i>
+											info@cityhospital.net
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+				
+				<!-- Footer Bottom -->
+                <div class="footer-bottom">
+					<div class="container-fluid">
+					
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0"><a href="#">OSR Infotech</a></p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+								
+									<!-- Copyright Menu -->
+									<div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="#">Terms and Conditions</a></li>
+											<li><a href="#">Policy</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+									
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->
+						
+					</div>
+				</div>
+				<!-- /Footer Bottom -->
+				
+			</footer>
+			<!-- /Footer -->
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		  <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		<!-- Custom JS -->
+	<script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'
+    media="screen" />
+<!-- Bootstrap -->
+<!-- Bootstrap DatePicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[id*=txtTime]').datetimepicker({
+            format: 'LT'
+            
+        });
+         $('[id*=txtTime1]').datetimepicker({
+            format: 'LT'
+            
+        });
+          $('[id*=txtDate]').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            format: "dd/mm/yyyy",
+            language: "tr"
+        });
+    });
+</script>
+       
+<script type="text/javascript">
+    function ValidatorUpdateDisplay(val) {
+        if (typeof (val.display) == "string") {
+            if (val.display == "None") {
+                return;
+            }
+            if (val.display == "Dynamic") {
+                val.style.display = val.isvalid ? "none" : "inline";
+                return;
+            }
+
+        }
+        val.style.visibility = val.isvalid ? "hidden" : "visible";
+        if (val.isvalid) {
+            document.getElementById(val.controltovalidate).style.border = '1px solid #333';
+        }
+        else {
+            document.getElementById(val.controltovalidate).style.border = '1px solid red';
+        }          
+    }
+</script>
+     
+    </div>
+    </form>
+</body>
+</html>

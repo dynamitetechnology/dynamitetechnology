@@ -1,0 +1,273 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="admin_AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+  <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>DoctorCall</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="assets/css/feathericon.min.css">
+			<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+		
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+         <div class="main-wrapper">
+		<asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="#" class="logo">
+						<img src="../assets/img/logo.png" alt="Logo">
+					</a>
+					<a href="#" class="logo logo-small">
+						<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+				<%--<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>--%>
+				
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+					
+				
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>Admin</h6>
+									<p class="text-muted mb-0">Administrator</p>
+								</div>
+							</div>							
+							<a class="dropdown-item" href="logout.aspx">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span>Main</span>
+							</li>
+							<li> 
+								<a href="ADashbaord.aspx"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li> 
+								<a href="AppointmentRequest.aspx"><i class="fe fe-layout"></i> <span>Appointments</span></a>
+							</li>
+							<li> 
+								<a href="Specialization.aspx"><i class="fe fe-users"></i> <span>Specialities</span></a>
+							</li>
+                            <li> 
+								<a href="ShiftMaster.aspx"><i class="fe fe-clock"></i> <span>Shift Master</span></a>
+							</li>
+                             <li> 
+								<a href="TimeSchedule.aspx"><i class="fe fe-clock"></i> <span>Time Schedule</span></a>
+							</li>
+							<li> 
+								<a href="DoctorMaster.aspx"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+							</li>
+							<li> 
+								<a href="PatientMaster.aspx"><i class="fe fe-user"></i> <span>Patients</span></a>
+							</li>
+                             <li> 
+								<a href="UploadPrescription.aspx"><i class="fe fe-comment"></i> <span>Upload Prescription</span></a>
+							</li>
+                            <li> 
+								<a href="MedicineOrder.aspx"><i class="fe fe-money"></i> <span>Medicine Order Detail</span></a>
+							</li>
+                            <li> 
+								<a href="SendSMS.aspx"><i class="fe fe-messanger"></i> <span>Send SMS</span></a>
+							</li>
+							<li> 
+								<a href="Review.aspx"><i class="fe fe-star-o"></i> <span>Reviews</span></a>
+							</li>
+							<li> 
+								<a href="Transaction.aspx"><i class="fe fe-activity"></i> <span>Transactions</span></a>
+							</li>							
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="#">Invoice Reports</a></li>
+								</ul>
+							</li>
+							
+							
+						
+							
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-sm-12">
+							  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+						</div>			
+					</div>
+					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+   
+		
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<!-- Datatables JS -->
+		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+		<script src="assets/plugins/datatables/datatables.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="assets/js/script.js"></script>
+        <script type="text/javascript">
+    function ValidatorUpdateDisplay(val) {
+        if (typeof (val.display) == "string") {
+            if (val.display == "None") {
+                return;
+            }
+            if (val.display == "Dynamic") {
+                val.style.display = val.isvalid ? "none" : "inline";
+                return;
+            }
+
+        }
+        val.style.visibility = val.isvalid ? "hidden" : "visible";
+        if (val.isvalid) {
+            document.getElementById(val.controltovalidate).style.border = '1px solid #333';
+        }
+        else {
+            document.getElementById(val.controltovalidate).style.border = '1px solid red';
+        }          
+    }
+</script>
+               <script>    
+
+              $(document).ready(function () {
+                  $('#myTable').DataTable({
+                      columns: [
+                      { title: "Doctor Name" },
+                          { title: "Day" },
+                          { title: "Shift" },
+                          { title: "From Time" },
+                          { title: "To Time" },
+                          { title: "Edit" },
+                          { title: "Delete" }
+
+                      ]
+                  });
+              });
+    </script> 
+               <script>    
+
+              $(document).ready(function () {
+                  $('#ShiftTable').DataTable({
+                      columns: [                     
+                          { title: "Shift" },
+                          { title: "From Time" },
+                          { title: "To Time" },
+                          { title: "Edit" },
+                          { title: "Delete" }
+
+                      ]
+                  });
+              });
+    </script>  
+              <script>    
+
+              $(document).ready(function () {
+                  $('#DoctorTable').DataTable({
+                      columns: [                     
+                          { title: "Doctor" },
+                          { title: "UserId" },
+                          { title: "Password" },
+                          { title: "Edit" },
+                          { title: "Delete" }
+
+                      ]
+                  });
+              });
+    </script>  
+    </form>
+</body>
+</html>
